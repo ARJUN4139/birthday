@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Special Dates 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #b980f0, #f2a2e8);
+      min-height: 100vh;
+      padding: 30px 15px 100px;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      color: #fff;
+      text-shadow: 0 0 10px #fff;
+      word-wrap: break-word;
+    }
+
+    @media (min-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      width: 100%;
+      max-width: 1000px;
+      margin-bottom: 40px;
+      z-index: 1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #ffe8fb;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #fff;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      .card h3 {
+        font-size: 1rem;
+      }
+      .card p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    .next-button {
+      background: #ffffffcc;
+      color: #b300b3;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+      transition: transform 0.2s ease, background 0.3s;
+      z-index: 1;
+      margin-top: 20px;
+    }
+
+    .next-button:hover {
+      transform: scale(1.05);
+      background: #fff;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Stars -->
+  <div class="stars" id="stars-container"></div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="sc.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>🌸 Our Special Dates 🌸</h1>
+
+  <div class="memory-grid">
+    <div class="card">
+      <h3>6 Nov 2024 – Proposal 💍</h3>
+      <p>At 12:00 AM, I proposed to my Baccha. The most beautiful beginning!</p>
+    </div>
+    <div class="card">
+      <h3>1 Feb 2025 – First Hug 🤗</h3>
+      <p>We met in Shrirampur. Our first real hug — heart-melting moment!</p>
+    </div>
+    <div class="card">
+      <h3>March 2025 – Last Calls 📞</h3>
+      <p>On 1st, our last call before distance. Then 21st – 16 mins of love at 8:54 AM.</p>
+    </div>
+    <div class="card">
+      <h3>1 April 2025 – Academy 🎓</h3>
+      <p>Baccha joined academy. Last day at home, a sweet but emotional one.</p>
+    </div>
+    <div class="card">
+      <h3>5 April 2025 – My Birthday 🎂</h3>
+      <p>At 12:00 AM, Baccha celebrated my birthday with cute video surprises!</p>
+    </div>
+    <div class="card">
+      <h3>12 May 2025 – Going Home 🏠</h3>
+      <p>Baccha went home from Nagar. Missed her already.</p>
+    </div>
+    <div class="card">
+      <h3>19 May 2025 – Return 🚌</h3>
+      <p>She came back to Nagar from home. Happy day!</p>
+    </div>
+    <div class="card">
+      <h3>4 June 2025 – Nearby House 🏡</h3>
+      <p>Baccha was in Shrirampur at a house near me.</p>
+    </div>
+    <div class="card">
+      <h3>5 June 2025 – Room Meet 💞</h3>
+      <p>We met in my room between 9 to 10 PM. Cozy, perfect evening!</p>
+    </div>
+    <div class="card">
+      <h3>8 June 2025 – Back to Nagar 🛤️</h3>
+      <p>She returned again. Every arrival brings joy!</p>
+    </div>
+  </div>
+
+  <a href="surprises.html">
+    <button class="next-button">More Birthday Surprises!</button>
+  </a>
+
+  <script>
+    // Floating stars
+    const starsContainer = document.getElementById("stars-container");
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = `${Math.random() * 100}vh`;
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      starsContainer.appendChild(star);
+    }
+
+    // Auto play fix for some browsers
+    const audio = document.getElementById("bg-music");
+    document.addEventListener("DOMContentLoaded", () => {
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Try again silently after short delay (for mobile)
+          setTimeout(() => audio.play(), 1000);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gallery 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #d0a9f5, #fcb6e1);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #fff;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .blur-bg {
+    transition: filter 0.3s ease;
+    width: 100%;
+  }
+
+  .top-box {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 15px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 25px;
+    z-index: 1;
+  }
+
+  .top-box h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 7vw, 3rem);
+    color: #fff8fc;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff90d6;
+    margin-bottom: 10px;
+  }
+
+  .top-box p {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    font-weight: 500;
+    color: #fff;
+    text-shadow: 0 0 6px #ffe3f1;
+    line-height: 1.5;
+  }
+
+  /* Grid gallery */
+  .grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 30px;
+  }
+
+  .image-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    background: #000;
+    position: relative;
+    cursor: pointer;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .overlay-text {
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    pointer-events: none;
+    z-index: 2;
+    position: absolute;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    position: relative;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+  }
+
+  .lightbox img {
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #fff;
+  }
+
+  .lightbox.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1000;
+  }
+
+  .next-btn {
+    display: inline-block;
+    background: #fff;
+    color: #ff69b4;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 35px;
+    text-decoration: none;
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    transition: 0.3s ease;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+
+  .next-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+
+  /* Confetti */
+  .confetti {
+    position: absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+  }
+
+  .confetti-piece {
+    position:absolute;
+    width:10px;
+    height:10px;
+    background-color:#ff69b4;
+    opacity:0.8;
+    animation: fall linear infinite;
+    border-radius:2px;
+  }
+
+  @keyframes fall {
+    0%{ transform: translateY(-10vh) rotate(0deg); opacity:1;}
+    100%{ transform: translateY(110vh) rotate(360deg); opacity:0;}
+  }
+
+  audio { display: none; }
+</style>
+</head>
+<body>
+<!-- Background music -->
+<audio id="bgMusic" src="sg.mp3" loop></audio>
+
+<div class="confetti" id="confetti-container"></div>
+
+<div class="blur-bg">
+  <div class="top-box">
+    <h1>Happy Birthday Betu 💖</h1>
+    <p>BACCHA [ ❤️ ] CLICK KAR HEART VAR!</p>
+  </div>
+
+  <div class="grid-gallery">
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="overlay-text">MOST FAV  💖</div>
+      <img src="A.png" alt="Memory 1">
+    </div>
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="overlay-text">BALA FIRST TOUCH  🌸</div>
+      <img src="B.jpg" alt="Memory 2">
+    </div>
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="overlay-text">BABY EYES 😁🫴 🌟</div>
+      <img src="C.jpg" alt="Memory 3">
+    </div>
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="overlay-text">SUKOON KA NAAM SUNA HAI😭💌🎉 AND ALSO FIRST HUG </div>
+      <img src="D.jpg" alt="Memory 4">
+    </div>
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="overlay-text">MOST OVERRATED PHOTO QUALITY 144P BUT EMOTION 1000000000K 😘💕</div>
+      <img src="E.jpg" alt="Memory 5">
+    </div>
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="overlay-text">FIGHT FOR MEET TU NAGAR LA HOTE 🌸</div>
+      <img src="F.jpg" alt="Memory 6">
+    </div>
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="overlay-text">FINALLY💖 5JUNE </div>
+      <img src="G.jpeg" alt="Memory 7">
+    </div>
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="overlay-text">IMG BG SMAJUN GHE KY MHANTO MI🙇🌟(RAM-SITA) </div>
+      <img src="H.jpg" alt="Memory 8">
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">&times;</span>
+  <img src="" id="lightbox-img">
+</div>
+
+<a href="calendar.html" class="next-btn">Next →</a>
+
+<script>
+const colors = ['#ff69b4','#ffd700','#87cefa','#32cd32','#ff6347','#dda0dd'];
+function createConfetti() {
+  const confetti = document.createElement('div');
+  confetti.classList.add('confetti-piece');
+  const size = Math.random()*8+5;
+  confetti.style.width = `${size}px`;
+  confetti.style.height = `${size}px`;
+  confetti.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+  confetti.style.left = Math.random()*100+'vw';
+  confetti.style.animationDuration = Math.random()*3+3+'s';
+  confetti.style.opacity = Math.random()+0.3;
+  document.getElementById('confetti-container').appendChild(confetti);
+  setTimeout(()=>confetti.remove(),7000);
+}
+let confettiInterval = setInterval(createConfetti, 200);
+if(window.innerWidth<480){
+  clearInterval(confettiInterval);
+  confettiInterval=setInterval(createConfetti,400);
+}
+
+function openLightbox(card){
+  const img = card.querySelector('img').src;
+  document.getElementById('lightbox-img').src = img;
+  document.getElementById('lightbox').classList.add('show');
+  document.querySelector('.blur-bg').style.filter = 'blur(6px)';
+}
+
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('show');
+  document.querySelector('.blur-bg').style.filter = 'none';
+}
+
+// Close lightbox on outside click
+document.getElementById('lightbox').addEventListener('click', function(e){
+  if(e.target === this) closeLightbox();
+});
+
+// Music autoplay + fade-in
+const music = document.getElementById('bgMusic');
+document.addEventListener('click', () => {
+  if (music.paused) {
+    music.volume = 0;
+    music.play();
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 1) {
+        vol += 0.02;
+        music.volume = vol;
+      } else clearInterval(fade);
+    }, 200);
+  }
+}, { once: true });
+</script>
+</body>
+</html>
